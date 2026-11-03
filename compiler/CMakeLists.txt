@@ -111,6 +111,7 @@ if(THEROCK_ENABLE_COMPILER)
       "-DLLVM_EXTERNAL_SPIRV_LLVM_TRANSLATOR_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}/spirv-llvm-translator"
       "-DSANITIZER_HSA_INCLUDE_PATH=${THEROCK_ROCM_SYSTEMS_SOURCE_DIR}/projects/rocr-runtime/runtime/hsa-runtime/inc"
       -DLLVM_INCLUDE_TESTS=${_llvm_include_tests}
+      -DCLANG_ENABLE_CIR=${THEROCK_ENABLE_CIR}
       -C${_therock_llvm_cache}
     )
   endif()

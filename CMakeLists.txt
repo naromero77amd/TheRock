@@ -256,6 +256,12 @@ cmake_dependent_option(THEROCK_ENABLE_FLANG
   "Build/install Flang (standalone amd-llvm-flang and/or amd-llvm fortran distribution)" ON
   "THEROCK_ENABLE_COMPILER;NOT WIN32" OFF)
 
+# ClangIR in amd-llvm. Mapped to -DCLANG_ENABLE_CIR before -C ROCm/TheRock.cmake.
+# Windows stays off (no MLIR/flang in that cache). Override with -DTHEROCK_ENABLE_CIR=OFF.
+cmake_dependent_option(THEROCK_ENABLE_CIR
+  "Build ClangIR support into amd-llvm clang (requires MLIR on the project list)" ON
+  "THEROCK_ENABLE_COMPILER;NOT WIN32" OFF)
+
 # FLANG=OFF must win over a cached/topology FLANG_STANDALONE=ON.
 if(NOT THEROCK_ENABLE_FLANG AND THEROCK_ENABLE_FLANG_STANDALONE)
   set(THEROCK_ENABLE_FLANG_STANDALONE OFF CACHE BOOL
